@@ -1,28 +1,39 @@
-package com.lish.base.klaus.base.mvp
+package com.littlegreens.baselibary.base.mvp
 
+import android.content.Context
 import com.lish.base.klaus.rx.RxManager
 
 /**
- * Created by littleGreens on 2019/5/7.
+ * @author LittleGreens <a href="mailto:alittlegreens@foxmail.com">Contact me.</a>
+ * @version 1.0
+ * @since 2019/9/5 17:39
  */
-abstract class BasePresenter<V1 : IView, M1 : BaseModel> {
+abstract class BasePresenter<V : IView, M : BaseModel> {
 
-    lateinit var mView: V1
-    lateinit var mModel: M1
+    public var mView: V? = null
+    protected lateinit var mModel: M
 
     protected var mRxManager = RxManager()
 
-    fun <V : IView, M : BaseModel> bindVM(v: V, m: M) {
-        this.mView = (v as? V1)!!
-        this.mModel = (m as? M1)!!
-        onAttach()
+    protected var mContext: Context? = null
+
+    fun <V1 : IView, M1 : BaseModel> bindVM(v: V1, m: M1) {
+        this.mModel = (m as? M)!!
+        onAttach(v)
     }
 
-    open fun onAttach() {
+    fun <V1 : IView> onAttach(v: V1) {
+        this.mView = v as V
+        this.mContext = mView?.getContext()
+    }
 
+    fun onDetach() {
+        this.mView = null
+        this.mContext = null
     }
 
     fun onDestroy() {
         mRxManager.clear()
+        onDetach()
     }
 }

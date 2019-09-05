@@ -1,6 +1,12 @@
-package com.lish.base.klaus.base.mvp
+package com.littlegreens.baselibary.base.mvp
+
+import android.content.Context
 
 /**
- * Created by littleGreens on 2019/5/7.
+ * @author LittleGreens <a href="mailto:alittlegreens@foxmail.com">Contact me.</a>
+ * @version 1.0
+ * @since 2019/9/5 17:39
  */
-interface IView
+interface IView {
+    fun getContext(): Context?
+}

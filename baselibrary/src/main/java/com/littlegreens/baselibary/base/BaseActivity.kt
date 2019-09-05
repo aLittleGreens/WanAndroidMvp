@@ -1,4 +1,4 @@
-package com.lish.base.klaus.base
+package com.littlegreens.baselibary.base
 
 import android.app.Activity
 import android.content.Context
@@ -13,7 +13,9 @@ import com.littlegreens.baselibary.R
 import com.littlegreens.baselibary.commonwidget.LoadingDialog
 
 /**
- * Created by littleGreens on 2019/5/8.
+ * @author LittleGreens <a href="mailto:alittlegreens@foxmail.com">Contact me.</a>
+ * @version 1.0
+ * @since 2019/9/5 17:39
  */
 abstract class BaseActivity : AppCompatActivity() {
 

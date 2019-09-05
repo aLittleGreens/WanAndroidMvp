@@ -1,19 +1,22 @@
-package com.lish.base.klaus.base
+package com.littlegreens.baselibary.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.lish.base.klaus.base.mvp.BaseModel
-import com.lish.base.klaus.base.mvp.BasePresenter
-import com.lish.base.klaus.base.mvp.IView
-import com.littlegreens.baselibary.commonutil.TUtil
 import com.lish.base.klaus.rx.RxManager
+import com.littlegreens.baselibary.base.mvp.BaseModel
+import com.littlegreens.baselibary.base.mvp.BasePresenter
+import com.littlegreens.baselibary.base.mvp.IView
+import com.littlegreens.baselibary.commonutil.TUtil
 import com.littlegreens.baselibary.commonwidget.LoadingDialog
 
 /**
- * Created by caiyuk on 2019/1/10.
+ * @author LittleGreens <a href="mailto:alittlegreens@foxmail.com">Contact me.</a>
+ * @version 1.0
+ * @since 2019/9/5 17:39
  */
 abstract class BaseFragment<P : BasePresenter<*, *>, M : BaseModel> : Fragment(), IView {
 
@@ -68,8 +71,11 @@ abstract class BaseFragment<P : BasePresenter<*, *>, M : BaseModel> : Fragment()
 
     override fun onDestroyView() {
         super.onDestroyView()
-        mPresenter!!.onDestroy()
+        mPresenter.onDestroy()
         mRxManager.clear()
     }
 
+    override fun getContext(): Context? {
+        return super.getContext()
+    }
 }
