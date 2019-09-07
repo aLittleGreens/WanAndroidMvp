@@ -2,14 +2,12 @@ package com.littlegreens.wanandroidmvp.api;
 
 
 import com.littlegreens.wanandroidmvp.bean.WXarticle;
+import com.littlegreens.wanandroidmvp.bean.WxArticle;
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.http.*;
 
-/**
- * @author zhoujin
- * @date 2017/7/3
- */
+
 
 public interface ApiService {
 
@@ -41,7 +39,7 @@ public interface ApiService {
      * @return
      */
     @GET("http://wanandroid.com/wxarticle/chapters/json")
-    Observable<WXarticle> getArticle();
+    Observable<WxArticle> getArticle();
 
     /**
      * post 和 get 都可以传全路径

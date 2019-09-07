@@ -1,16 +1,16 @@
-package com.littlegreens.wanandroidmvp.api;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.littlegreens.baselibary.net.http;
 
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * @author bruce.chen
- * 
- *         2016年1月25日
+ * @author LittleGreens <a href="mailto:alittlegreens@foxmail.com">Contact me.</a>
+ * @version 1.0
+ * @since 2019/9/6 14:12
  */
 public class SimpleCookieJar implements CookieJar {
 

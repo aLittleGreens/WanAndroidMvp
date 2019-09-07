@@ -100,7 +100,7 @@ public class Api {
     private Api(Context context, String baseUrl) {
         //开启Log
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
-        logInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
+        logInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS);
         //缓存
         File cacheFile = new File(context.getCacheDir(), "cache");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
@@ -164,7 +164,7 @@ public class Api {
     }
 
     public ApiService apiService;
-    static String baseUrl = "http://wanandroid.com/";
+    static String baseUrl = "https://wanandroid.com/";
 
 //    /**
 //
@@ -211,11 +211,6 @@ public class Api {
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
             String cacheControl = request.cacheControl().toString();
-            if (!NetWorkUtils.isNetConnected(sContext)) {
-                request = request.newBuilder()
-                        .cacheControl(TextUtils.isEmpty(cacheControl) ? CacheControl.FORCE_NETWORK : CacheControl.FORCE_CACHE)
-                        .build();
-            }
             Response originalResponse = chain.proceed(request);
             if (NetWorkUtils.isNetConnected(sContext)) {
                 //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置

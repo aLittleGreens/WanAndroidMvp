@@ -2,6 +2,7 @@ package com.littlegreens.baselibary.base
 
 import android.app.Application
 import android.content.Context
+import com.littlegreens.baselibary.commonutil.SPUtil
 
 /**
  *
@@ -14,6 +15,9 @@ open class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         appContext = applicationContext
+        SPUtil.init(applicationContext)
+
+
     }
 
     companion object {

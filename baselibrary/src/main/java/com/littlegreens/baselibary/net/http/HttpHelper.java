@@ -1,8 +1,9 @@
-package com.littlegreens.wanandroidmvp.api.http;
+package com.littlegreens.baselibary.net.http;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import com.littlegreens.baselibary.commonutil.JsonUtil;
 import okhttp3.*;
 
 import java.util.HashMap;
