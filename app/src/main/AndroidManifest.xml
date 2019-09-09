@@ -18,6 +18,10 @@
 
         </activity>
         <activity android:name=".modules.home.activity.HomeActivity">
+
+        </activity>
+        <activity android:name=".modules.user.activity.LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

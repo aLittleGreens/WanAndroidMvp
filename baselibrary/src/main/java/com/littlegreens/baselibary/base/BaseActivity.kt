@@ -109,7 +109,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 开启加载进度条
      */
-    fun startProgressDialog() {
+    protected fun startProgressDialog() {
         LoadingDialog.showDialogForLoading(mContext as Activity)
     }
 
@@ -118,14 +118,14 @@ abstract class BaseActivity : AppCompatActivity() {
      *
      * @param msg
      */
-    fun startProgressDialog(msg: String) {
+    protected fun startProgressDialog(msg: String) {
         LoadingDialog.showDialogForLoading(mContext as Activity, msg, true)
     }
 
     /**
      * 停止加载进度条
      */
-    fun stopProgressDialog() {
+    protected fun stopProgressDialog() {
         LoadingDialog.cancelDialogForLoading()
     }
 

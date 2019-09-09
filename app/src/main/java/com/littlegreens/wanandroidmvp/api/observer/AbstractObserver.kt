@@ -1,6 +1,5 @@
 package com.littlegreens.wanandroidmvp.api.observer
 
-import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import com.google.gson.JsonParseException
@@ -19,6 +18,12 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.util.concurrent.TimeoutException
 
+/**
+ *
+ * @author LittleGreens <a href="mailto:alittlegreens@foxmail.com">Contact me.</a>
+ * @version 1.0
+ * @since 2019-09-07 17:54
+ */
 abstract class AbstractObserver<T : Any>(private val rxManager: RxManager? = null) : Observer<T> {
 
     abstract fun onSuccess(bean: T)
@@ -62,11 +67,11 @@ class ApiException(val errorCode: Int, override val message: String?, val showMe
 
     companion object {
 
-        const val ERROR_UNKONWN = -1
-        const val ERROR_UNKONWN_HOST = -2
-        const val ERROR_CONNECT_TIMEOUT = -3
-        const val ERROR_TOKEN_EXPIRED = -4
-        const val ERROR_JSONPARSEEXCEPTION = -5
+        const val ERROR_UNKONWN = -1    //其他未知错误
+        const val ERROR_UNKONWN_HOST = -2   //网络未连接
+        const val ERROR_CONNECT_TIMEOUT = -3    //连接服务器超时
+        const val ERROR_TOKEN_EXPIRED = -4  // token过期
+        const val ERROR_JSONPARSEEXCEPTION = -5 //json解析异常
 
 
         fun parseException(error: Throwable): ApiException {

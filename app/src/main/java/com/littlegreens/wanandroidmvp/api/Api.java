@@ -1,13 +1,13 @@
 package com.littlegreens.wanandroidmvp.api;
 
 import android.content.Context;
-import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.littlegreens.baselibary.base.BaseApplication;
 import com.littlegreens.baselibary.commonutil.NetWorkUtils;
 import com.littlegreens.baselibary.commonutil.ToastUitl;
+import com.littlegreens.baselibary.net.CookieManager;
 import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -133,6 +133,7 @@ public class Api {
                 .addInterceptor(headerInterceptor)
                 .addInterceptor(logInterceptor)
                 .sslSocketFactory(sslSocketFactory)
+                .cookieJar(CookieManager.getInstance(context).getCookieJar())
                 .hostnameVerifier(new HostnameVerifier() {
                     @Override
                     public boolean verify(String hostname, SSLSession session) {

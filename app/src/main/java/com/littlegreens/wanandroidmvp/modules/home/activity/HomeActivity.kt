@@ -3,9 +3,7 @@ package com.littlegreens.wanandroidmvp.modules.home.activity
 import android.util.Log
 import com.littlegreens.baselibary.base.BaseMvpActivity
 import com.littlegreens.baselibary.commonutil.ToastUitl
-import com.littlegreens.baselibary.commonwidget.LoadingDialog
 import com.littlegreens.wanandroidmvp.R
-import com.littlegreens.wanandroidmvp.bean.WXarticle
 import com.littlegreens.wanandroidmvp.bean.WxArticle
 import com.littlegreens.wanandroidmvp.modules.home.contract.HomeContract
 import com.littlegreens.wanandroidmvp.modules.home.model.HomeModel
@@ -24,7 +22,7 @@ class HomeActivity : BaseMvpActivity<HomePresenter, HomeModel>(), HomeContract.V
     }
 
     override fun initEvent() {
-        bt_request!!.setOnClickListener { mPresenter.getArticleRequest() }
+        bt_request.setOnClickListener { mPresenter.getArticleRequest() }
     }
 
     override fun returnArticle(wXarticle: WxArticle) {
@@ -34,7 +32,7 @@ class HomeActivity : BaseMvpActivity<HomePresenter, HomeModel>(), HomeContract.V
 
     override fun stopLoading() {
         Log.e(TAG, "stopLoading")
-        LoadingDialog.cancelDialogForLoading()
+        startProgressDialog()
     }
 
     override fun showErrorTip(msg: String) {
@@ -43,7 +41,7 @@ class HomeActivity : BaseMvpActivity<HomePresenter, HomeModel>(), HomeContract.V
 
     override fun showLoading(msg: String) {
         Log.e(TAG, "showLoading")
-        LoadingDialog.showDialogForLoading(this,msg,true)
+        startProgressDialog(msg)
     }
 
     companion object {

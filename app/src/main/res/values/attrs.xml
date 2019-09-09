@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SubmitView">
+        <attr name="sv_bindEditText1" format="reference"/>
+        <attr name="sv_bindEditText2" format="reference"/>
+        <attr name="sv_bindEditText3" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="InputView">
+        <attr name="leftIcon_marginParent" format="dimension"/>
+        //左边图标距离边界距离
+        <attr name="leftIcon_marginBrother" format="dimension"/>
+        //左边图标距离兄弟图标边界距离
+        <attr name="rightIcon_marginParent" format="dimension"/>
+        //右边图标距离边界距离
+        <attr name="rightIcon_marginBrother" format="dimension"/>
+        //右边边图标距离兄弟图标边界距离
+
+    </declare-styleable>
+
+    <declare-styleable name="AccountInputView">
+        <attr name="leftIcon_width" format="dimension"/>
+        //左边图标宽度
+        <attr name="leftIcon_height" format="dimension"/>
+        //左边图标高度
+        <attr name="iconImageResource1" format="reference"/>
+        <attr name="iconImageResource2" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="PasswordInputView">
+        <attr name="iconIconImageResource2" format="reference"/>
+        <attr name="rightIcon_width" format="dimension"/>
+        //右边图标宽度
+        <attr name="rightIcon_height" format="dimension"/>
+        //右边图标高度
+    </declare-styleable>
+</resources>

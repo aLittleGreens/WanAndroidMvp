@@ -10,7 +10,7 @@ import com.lish.base.klaus.rx.RxManager
  */
 abstract class BasePresenter<V : IView, M : BaseModel> {
 
-    public var mView: V? = null
+    protected var mView: V? = null
     protected lateinit var mModel: M
 
     protected var mRxManager = RxManager()

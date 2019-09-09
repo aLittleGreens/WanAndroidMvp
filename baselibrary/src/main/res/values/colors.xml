@@ -126,4 +126,23 @@
     <color name="color_ececec">#ECECEC</color>
     <color name="color_ffc20b">#FFC20B</color>
 
+
+    <!--=======================通用颜色==========================-->
+    <!--主题色-->
+    <color name="main">#4282f4</color>
+    <color name="accent">#f86734</color>
+    <color name="white_alpha">#ccffffff</color>
+    <color name="black_pure">#000000</color>
+    <color name="black_alpha">#22000000</color>
+    <color name="gray_dark">#666666</color>
+    <color name="gray_light">#999999</color>
+    <!--文字颜色-->
+    <color name="text_main">@color/main</color>
+    <color name="text_accent">@color/accent</color>
+    <color name="text_white">#ffffff</color>
+    <color name="text_white_alpha">#88ffffff</color>
+    <color name="text_white_dark">#cccccc</color>
+    <color name="text_gray_light">#999999</color>
+    <color name="text_gray_dark">#666666</color>
+    <color name="text_black">#333333</color>
 </resources>
