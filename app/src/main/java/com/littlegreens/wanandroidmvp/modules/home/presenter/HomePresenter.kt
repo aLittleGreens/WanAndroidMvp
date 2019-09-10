@@ -15,6 +15,14 @@ class HomePresenter : HomeContract.Presenter() {
     override fun getArticleRequest() {
         mView?.showLoading("loading")
         mModel.article.doFinally { mView?.stopLoading() }.subscribe(object : ObserverImpl<WxArticle>(mRxManager) {
+            override fun finish() {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun start() {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
             override fun onSuccess(bean: WxArticle) {
                 LogUtil.d("onSuccess: $bean")
                 mView?.returnArticle(bean)

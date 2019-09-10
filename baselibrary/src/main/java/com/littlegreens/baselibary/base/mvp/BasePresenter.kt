@@ -18,13 +18,14 @@ abstract class BasePresenter<V : IView, M : BaseModel> {
     protected var mContext: Context? = null
 
     fun <V1 : IView, M1 : BaseModel> bindVM(v: V1, m: M1) {
-        this.mModel = (m as? M)!!
+        this.mModel = (m as M)!!
+        this.mView = v as V
+        this.mContext = mView?.getContext()
         onAttach(v)
     }
 
     fun <V1 : IView> onAttach(v: V1) {
-        this.mView = v as V
-        this.mContext = mView?.getContext()
+
     }
 
     fun onDetach() {

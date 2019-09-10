@@ -17,11 +17,11 @@ abstract class ObserverImpl<T : BaseResponse<*>>(private val rxManager: RxManage
      * 统一处理Token过期
      */
     override fun onNext(t: T) {
-        if (t.code == 70001) {
+        if (t.errorCode == 70001) {
             onError(
                 ApiException(
                     ApiException.ERROR_TOKEN_EXPIRED,
-                    t.msg, BaseApplication.appContext!!.getString(R.string.text_token_expired)
+                    t.errorMsg, BaseApplication.appContext!!.getString(R.string.text_token_expired)
                 )
             )
             return

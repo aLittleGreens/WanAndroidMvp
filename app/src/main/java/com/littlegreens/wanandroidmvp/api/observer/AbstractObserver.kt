@@ -30,8 +30,13 @@ abstract class AbstractObserver<T : Any>(private val rxManager: RxManager? = nul
 
     abstract fun onFail(error: ApiException)
 
+    abstract fun finish()
+
+    abstract fun start()
+
     override fun onSubscribe(d: Disposable) {
         rxManager?.add(d)
+        start()
     }
 
     override fun onNext(t: T) {
@@ -46,16 +51,18 @@ abstract class AbstractObserver<T : Any>(private val rxManager: RxManager? = nul
             return
         }
         onFail(apiException)
+        finish()
     }
 
     override fun onComplete() {
         LogUtil.e("onComplete")
+        finish()
     }
 
     private fun quitAndStartLogin(showMessage: String) {
-         val context = BaseApplication.appContext
-         Toast.makeText(context, showMessage, Toast.LENGTH_SHORT).show()
-         CookieManager.getInstance(context).clearCookieInfo()
+        val context = BaseApplication.appContext
+        Toast.makeText(context, showMessage, Toast.LENGTH_SHORT).show()
+        CookieManager.getInstance(context).clearCookieInfo()
 //         val intent = Intent(context, LoginActivity::class.java)
 //         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
 //         context.startActivity(intent)
@@ -87,7 +94,8 @@ class ApiException(val errorCode: Int, override val message: String?, val showMe
                     context.getString(R.string.text_address_not_reachable)
                 }
             } else if (error is ConnectException || error is TimeoutException
-                    || error is SocketException || error is SocketTimeoutException) {
+                || error is SocketException || error is SocketTimeoutException
+            ) {
                 code = ERROR_CONNECT_TIMEOUT
                 showMessage = if (!NetWorkUtils.isNetConnected(context)) {
                     context.getString(R.string.text_network_not_available)

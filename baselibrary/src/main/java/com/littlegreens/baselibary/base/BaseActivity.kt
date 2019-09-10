@@ -8,8 +8,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import androidx.appcompat.app.AppCompatActivity
 import com.littlegreens.baselibary.R
+import com.littlegreens.baselibary.base.support.MySupportActivity
 import com.littlegreens.baselibary.commonwidget.LoadingDialog
 
 /**
@@ -17,7 +17,7 @@ import com.littlegreens.baselibary.commonwidget.LoadingDialog
  * @version 1.0
  * @since 2019/9/5 17:39
  */
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : MySupportActivity() {
 
     lateinit var mContext: Context
 

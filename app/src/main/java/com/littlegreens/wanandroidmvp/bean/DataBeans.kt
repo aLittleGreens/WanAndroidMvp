@@ -10,8 +10,10 @@ import com.littlegreens.baselibary.basebean.BaseResponse
  */
 
 
-/********************* Begin: wxArticle Data ***********************/
-data class WxArticle(override var data : List<WxDataBean>?) : BaseResponse<List<WxDataBean>>()
 
-data class WxDataBean(var id: Int,var name: String)
+
+/********************* Begin: wxArticle Data ***********************/
+data class WxArticle(override var data: List<WxDataBean>?) : BaseResponse<List<WxDataBean>>()
+
+data class WxDataBean(var id: Int, var name: String)
 /********************* End: wxArticle Data ***********************/
