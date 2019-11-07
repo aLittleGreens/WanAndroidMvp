@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import com.billy.android.loading.Gloading
 import com.littlegreens.baselibary.R
 import com.littlegreens.baselibary.base.support.MySupportActivity
 import com.littlegreens.baselibary.commonwidget.LoadingDialog
@@ -127,6 +128,45 @@ abstract class BaseActivity : MySupportActivity() {
      */
     protected fun stopProgressDialog() {
         LoadingDialog.cancelDialogForLoading()
+    }
+
+
+    protected var mHolder: Gloading.Holder? = null
+
+    /**
+     * make a Gloading.Holder wrap with current activity by default
+     * override this method in subclass to do special initialization
+     * @see SpecialActivity
+     */
+    protected fun initLoadingStatusViewIfNeed() {
+        if (mHolder == null) {
+            //bind status view to activity root view by default
+            mHolder = Gloading.getDefault().wrap(this).withRetry { onLoadRetry() }
+        }
+    }
+
+    protected open fun onLoadRetry() {
+        // override this method in subclass to do retry task
+    }
+
+    fun showLoading() {
+        initLoadingStatusViewIfNeed()
+        mHolder!!.showLoading()
+    }
+
+    fun showLoadSuccess() {
+        initLoadingStatusViewIfNeed()
+        mHolder!!.showLoadSuccess()
+    }
+
+    fun showLoadFailed() {
+        initLoadingStatusViewIfNeed()
+        mHolder!!.showLoadFailed()
+    }
+
+    fun showEmpty() {
+        initLoadingStatusViewIfNeed()
+        mHolder!!.showEmpty()
     }
 
 }

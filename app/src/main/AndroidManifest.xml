@@ -18,15 +18,15 @@
 
         </activity>
         <activity android:name=".modules.home.activity.HomeActivity">
-
-        </activity>
-        <activity android:name=".modules.user.activity.LoginActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".modules.user.activity.LoginActivity">
+
+
         </activity>
     </application>
 

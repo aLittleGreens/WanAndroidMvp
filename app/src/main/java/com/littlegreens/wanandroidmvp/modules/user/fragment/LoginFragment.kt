@@ -1,9 +1,11 @@
 package com.littlegreens.wanandroidmvp.modules.user.fragment
 
+import android.content.Intent
 import android.view.View
 import com.littlegreens.baselibary.base.BaseMvpFragment
 import com.littlegreens.baselibary.commonutil.ToastUitl
 import com.littlegreens.wanandroidmvp.R
+import com.littlegreens.wanandroidmvp.modules.home.activity.HomeActivity
 import com.littlegreens.wanandroidmvp.modules.user.activity.LoginActivity
 import com.littlegreens.wanandroidmvp.modules.user.contract.LoginContract
 import com.littlegreens.wanandroidmvp.modules.user.model.LoginModel
@@ -45,6 +47,8 @@ class LoginFragment : BaseMvpFragment<LoginPresent, LoginModel>(), LoginContract
 
     override fun loginSuccess() {
         ToastUitl.showShort("登录成功")
+        startActivity(Intent(activity, HomeActivity::class.java))
+        activity?.finish()
     }
 
 

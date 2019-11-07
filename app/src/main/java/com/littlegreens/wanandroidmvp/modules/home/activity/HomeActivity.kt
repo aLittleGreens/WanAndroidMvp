@@ -26,22 +26,30 @@ class HomeActivity : BaseMvpActivity<HomePresenter, HomeModel>(), HomeContract.V
     }
 
     override fun returnArticle(wXarticle: WxArticle) {
+        showLoadSuccess()
         ToastUitl.showShort(wXarticle.toString())
         tv.text = wXarticle.toString()
     }
 
     override fun stopLoading() {
-        Log.e(TAG, "stopLoading")
-        startProgressDialog()
+        Log.d(TAG, "stopLoading")
+//       stopProgressDialog()
     }
 
     override fun showErrorTip(msg: String) {
         Log.e(TAG, "msg:$msg")
+        showLoadFailed()
     }
 
     override fun showLoading(msg: String) {
         Log.e(TAG, "showLoading")
-        startProgressDialog(msg)
+//        startProgressDialog(msg)
+        showLoading()
+    }
+
+
+    override fun onLoadRetry(){
+        mPresenter.getArticleRequest()
     }
 
     companion object {

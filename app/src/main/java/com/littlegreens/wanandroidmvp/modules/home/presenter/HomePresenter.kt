@@ -13,14 +13,14 @@ import com.littlegreens.wanandroidmvp.modules.home.contract.HomeContract
 class HomePresenter : HomeContract.Presenter() {
 
     override fun getArticleRequest() {
-        mView?.showLoading("loading")
-        mModel.article.doFinally { mView?.stopLoading() }.subscribe(object : ObserverImpl<WxArticle>(mRxManager) {
+        mModel.article.subscribe(object : ObserverImpl<WxArticle>(mRxManager) {
             override fun finish() {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                LogUtil.d("finish:")
+                mView?.stopLoading()
             }
 
             override fun start() {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                mView?.showLoading("loading...")
             }
 
             override fun onSuccess(bean: WxArticle) {

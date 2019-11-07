@@ -45,13 +45,14 @@ abstract class AbstractObserver<T : Any>(private val rxManager: RxManager? = nul
 
     override fun onError(e: Throwable) {
         Log.e("onError", e.message ?: "onError")
+        finish()
         val apiException = ApiException.parseException(e)
         if (apiException.errorCode == ApiException.ERROR_TOKEN_EXPIRED) {
             quitAndStartLogin(apiException.showMessage)
             return
         }
         onFail(apiException)
-        finish()
+
     }
 
     override fun onComplete() {

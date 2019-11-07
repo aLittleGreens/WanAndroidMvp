@@ -1,5 +1,6 @@
 package com.littlegreens.wanandroidmvp.modules.user.activity
 
+import android.view.WindowManager
 import com.littlegreens.baselibary.base.BaseActivity
 import com.littlegreens.baselibary.commonutil.LogUtil
 import com.littlegreens.wanandroidmvp.R
@@ -22,32 +23,22 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun initView() {
-
-//        loginFragment = findFragment(LoginFragment::class.java)
-        loginFragment = supportFragmentManager.findFragmentByTag("LoginFragment") as LoginFragment?
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+        loginFragment = findFragment(LoginFragment::class.java)
         if (loginFragment == null) {
             loginFragment = LoginFragment()
             registerFragment = RegisterFragment()
-
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.add(R.id.fl_container, loginFragment!!, "LoginFragment")
-            fragmentTransaction.add(R.id.fl_container, registerFragment!!, "RegisterFragment")
-            fragmentTransaction.show(loginFragment!!)
-            fragmentTransaction .hide(registerFragment!!)
-            fragmentTransaction.commit()
-//            loadMultipleRootFragment(R.id.fl_container, 0, loginFragment, registerFragment)
+            loadMultipleRootFragment(R.id.fl_container, 0, loginFragment, registerFragment)
         }
 
     }
 
     public fun switch(showPosition: Int) {
-        LogUtil.d("switch:"+showPosition)
+        LogUtil.d("switch:" + showPosition)
         if (showPosition == 0) {
-//            showHideFragment(loginFragment)
-            supportFragmentManager.beginTransaction().show(loginFragment!!).hide(registerFragment!!).commit()
+            showHideFragment(loginFragment)
         } else {
-//            showHideFragment(registerFragment)
-            supportFragmentManager.beginTransaction().show(registerFragment!!).hide(loginFragment!!).commit()
+            showHideFragment(registerFragment)
         }
     }
 
