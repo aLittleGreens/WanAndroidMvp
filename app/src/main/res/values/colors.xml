@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">@color/main</color>
+    <color name="colorPrimaryDark">@color/transparent</color>
+    <color name="colorAccent">@color/main</color>
+
+    <color name="ic_launcher_background_start">@color/main</color>
+    <color name="ic_launcher_background_end">@color/main</color>
 
     <color name="color_loading_status">#FFCCCCCC</color>
     <color name="main_bg">#FF2D84C2</color>
+
+    <color name="bottom_bar_overlay">#aff5f5f5</color>
+    <color name="mine_blur_overlay">#33000000</color>
+    <color name="about_me_blur_overlay">#33000000</color>
+
+    <!--activity默认背景色-->
+    <color name="bg">#f5f5f5</color>
+    <color name="bg_dark">#c5c5c5</color>
+    <!--分割线-->
+    <color name="line">#f5f5f5</color>
+    <!--Dialog弹出默认背景变暗的颜色-->
+    <color name="dialog_bg">#aa000000</color>
+    <!--点击水波纹效果的颜色-->
+    <color name="ripple_dark">#11000000</color>
+    <color name="ripple_light">#11ffffff</color>
 </resources>

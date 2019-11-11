@@ -23,4 +23,6 @@
     <string name="to_recycler_view_load">在RecyclerView中使用</string>
     <string name="to_special">特殊的Loading UI</string>
     <string name="wrap_single_view">加载状态仅显示在某个View的区域</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>

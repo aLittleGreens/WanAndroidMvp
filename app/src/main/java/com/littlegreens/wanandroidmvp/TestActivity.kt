@@ -4,7 +4,7 @@ import com.lish.base.klaus.rx.RxBus
 import com.littlegreens.baselibary.base.BaseActivity
 
 
-class MainActivity : BaseActivity() {
+class TestActivity : BaseActivity() {
 
 
     override fun initLayoutId(): Int {
@@ -21,7 +21,7 @@ class MainActivity : BaseActivity() {
 
     companion object {
 
-        private val TAG = "com.klaus.MainActivity"
+        private val TAG = "com.klaus.TestActivity"
     }
 
 }
