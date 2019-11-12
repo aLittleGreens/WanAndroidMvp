@@ -35,6 +35,7 @@ abstract class BaseFragment : MySupportFragment() {
         super.onViewCreated(view, savedInstanceState)
         initView(rootView)//Kotlin 在onCreateView用导入布局获取id，空指针，在onActivityCreated。调用可解决
         initEvent()
+        loadData()
     }
 
     //获取布局文件
@@ -44,6 +45,8 @@ abstract class BaseFragment : MySupportFragment() {
     protected abstract fun initView(view: View?)
 
     protected abstract fun initEvent()
+
+    protected abstract fun loadData()
 
 
     /**

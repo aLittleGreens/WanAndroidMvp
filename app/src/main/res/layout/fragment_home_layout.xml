@@ -6,21 +6,37 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/x50"
-            android:background="@color/main"
-            android:gravity="center"
-            android:text="首頁"
+    <per.goweii.actionbarex.common.ActionBarCommon
+            android:id="@+id/actionBarCommon"
+            style="@style/ActionBar.Common"
+            app:abc_rightIconColor="@color/white"
+            app:abc_rightIconMarginRight="3dp"
+            app:abc_rightIconPadding="13dp"
+            app:abc_rightIconRes="@drawable/ic_search"
+            app:abc_titleText="首页"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-            android:id="@+id/recycleView"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/main_bg"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            app:layout_constraintTop_toBottomOf="@+id/actionBarCommon"
+            android:paddingBottom="@dimen/bottom_bar_height"
+            android:layout_marginBottom="@dimen/bottom_bar_height"
+            >
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:scrollbars="vertical"
+
+                />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

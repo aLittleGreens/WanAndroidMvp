@@ -1,15 +1,18 @@
 package com.littlegreens.wanandroidmvp.modules.main.fragment.home
 
-import android.os.Handler
 import android.view.View
 import com.billy.android.loading.Gloading
 import com.littlegreens.baselibary.base.BaseMvpFragment
 import com.littlegreens.baselibary.commonutil.LogUtil
-import com.littlegreens.wanandroidmvp.R
+import com.littlegreens.baselibary.commonutil.ToastUitl
 import com.littlegreens.wanandroidmvp.modules.main.fragment.home.contract.HomeContract
 import com.littlegreens.wanandroidmvp.modules.main.fragment.home.model.HomeModel
+import com.littlegreens.wanandroidmvp.modules.main.fragment.home.model.bean.ArticleBean
+import com.littlegreens.wanandroidmvp.modules.main.fragment.home.model.bean.BannerBean
+import com.littlegreens.wanandroidmvp.modules.main.fragment.home.model.bean.HomeArticalBean
 import com.littlegreens.wanandroidmvp.modules.main.fragment.home.presenter.HomePresenter
 import kotlinx.android.synthetic.main.fragment_home_layout.*
+
 
 /**
  * @author LittleGreens [Contact me.](mailto:alittlegreens@foxmail.com)
@@ -17,6 +20,36 @@ import kotlinx.android.synthetic.main.fragment_home_layout.*
  * @since 2019/11/7 18:00
  */
 class HomeFragment : BaseMvpFragment<HomePresenter, HomeModel>(), HomeContract.View {
+
+    private val PAGE_START = 0
+    private var currPage = PAGE_START
+
+    override fun getBannerSuccess(code: Int, data: List<BannerBean>) {
+        LogUtil.d("code：$code data:$data")
+    }
+
+    override fun getBannerFail(code: Int, msg: String) {
+        LogUtil.d("code：$code msg:$msg")
+    }
+
+    override fun getArticleListSuccess(code: Int, data: HomeArticalBean) {
+        LogUtil.d("code：$code data:$data")
+        success()
+    }
+
+    override fun getArticleListFailed(code: Int, msg: String) {
+        LogUtil.d("code：$code msg:$msg")
+        ToastUitl.showShort(msg)
+        fail()
+    }
+
+    override fun getTopArticleListSuccess(code: Int, data: List<ArticleBean>) {
+        LogUtil.d("code：$code data:$data")
+    }
+
+    override fun getTopArticleListFailed(code: Int, msg: String) {
+        LogUtil.d("code：$code msg:$msg")
+    }
 
     companion object {
         fun create(): HomeFragment {
@@ -33,32 +66,62 @@ class HomeFragment : BaseMvpFragment<HomePresenter, HomeModel>(), HomeContract.V
     override fun stopLoading() {
     }
 
-    override val layoutResource: Int = R.layout.fragment_home_layout
+    override val layoutResource: Int = com.littlegreens.wanandroidmvp.R.layout.fragment_home_layout
 
     override fun initView(view: View?) {
-        LogUtil.d("recycleView :$recycleView")
-        loadImage()
+        createHeaderBanner()
+    }
+
+    private fun createHeaderBanner() {
+
+
     }
 
     override fun initEvent() {
 
+        actionBarCommon.setOnRightIconClickListener {
+            ToastUitl.showShort("搜索")
+        }
+
+
+        refreshLayout.setOnRefreshListener { refreshlayout ->
+            firstloadData()
+        }
+        refreshLayout.setOnLoadMoreListener { refreshlayout ->
+            currPage++
+            mPresenter.getArticleList(currPage)
+        }
+    }
+
+    override fun loadData() {
+        showLoading()
+        firstloadData()
+
+
     }
 
     override fun initLoadingStatusViewHolder(): Gloading.Holder? {
-        return Gloading.getDefault().wrap(recycleView).withRetry(Runnable {
-            loadImage()
+        return Gloading.getDefault().wrap(recyclerView).withRetry(Runnable {
+            showLoading()
+            firstloadData()
         })
     }
 
-    private fun loadImage() {
-        showLoading()
-        LogUtil.d("showLoading")
-        Handler().postDelayed({
-            LogUtil.d("showLoadFailed")
-            recycleView.setText("success")
-            showLoadSuccess()
-        }, 5000)
+    private fun firstloadData() {
+        mPresenter.getBanner()
+        mPresenter.getTopArticleList()
+        currPage = PAGE_START
+        mPresenter.getArticleList(currPage)
     }
 
+    fun success() {
+        showLoadSuccess()
+        refreshLayout.finishRefresh(true)
+        refreshLayout.finishLoadMore(true)
+    }
 
+    fun fail() {
+        refreshLayout.finishRefresh(false)
+        refreshLayout.finishLoadMore(false)
+    }
 }

@@ -18,6 +18,9 @@ import kotlinx.android.synthetic.main.register_layout.*
  * @since 2019/9/10 14:04
  */
 class RegisterFragment : BaseMvpFragment<RegisterPresent, RegisterModel>(), RegisterContract.View {
+    override fun loadData() {
+    }
+
     override val layoutResource: Int = R.layout.register_layout
 
     override fun initView(view: View?) {

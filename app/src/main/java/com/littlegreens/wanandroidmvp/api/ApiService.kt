@@ -6,6 +6,9 @@ import com.littlegreens.wanandroidmvp.bean.LoginBean
 import com.littlegreens.wanandroidmvp.bean.RegisterBean
 import com.littlegreens.wanandroidmvp.bean.WXarticle
 import com.littlegreens.wanandroidmvp.bean.WxArticle
+import com.littlegreens.wanandroidmvp.modules.main.fragment.home.model.bean.ArticleBeanTopList
+import com.littlegreens.wanandroidmvp.modules.main.fragment.home.model.bean.BannerBeanList
+import com.littlegreens.wanandroidmvp.modules.main.fragment.home.model.bean.HomeArticalBeanList
 import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.http.*
@@ -80,4 +83,26 @@ interface ApiService {
     @GET("user/logout/json")
     fun logout(): Observable<BaseResponse<Any>>
 
+
+    //首页
+    /**
+     * 首页banner
+     */
+    @GET("banner/json")
+    fun getBanner(): Observable<BannerBeanList>
+
+    /**
+     * 置顶文章
+     * 方法：GET
+     */
+    @GET("article/top/json")
+    fun getTopArticleList(): Observable<ArticleBeanTopList>
+
+    /**
+     * 首页文章列表
+     * 方法：GET
+     * 参数：页码，拼接在连接中，从0开始。
+     */
+    @GET("article/list/{page}/json")
+    fun getArticleList(@Path("page") page: Int): Observable<HomeArticalBeanList>
 }

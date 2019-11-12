@@ -18,6 +18,9 @@ import kotlinx.android.synthetic.main.login_layout.*
  * @since 2019/9/10 10:54
  */
 class LoginFragment : BaseMvpFragment<LoginPresent, LoginModel>(), LoginContract.View {
+    override fun loadData() {
+    }
+
     override fun initEvent() {
         sv_login.setOnClickListener {
             mPresenter.login(piv_register_account.text, piv_register_password.text)

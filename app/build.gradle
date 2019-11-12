@@ -26,5 +26,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":baselibrary")
     implementation 'com.google.android.material:material:1.0.0'
-//    implementation project(":actionbarex")
+    implementation project(":actionbarex-common")
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'  //1.0.5及以前版本的老用户升级需谨慎，API改动过大
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'  //没有使用特殊Header，可以不加这行
 }
