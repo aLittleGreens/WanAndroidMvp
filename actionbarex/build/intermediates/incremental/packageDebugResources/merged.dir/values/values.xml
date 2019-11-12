@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="actionbarex_common_bottom_line_color_def">#00000000</color>
+    <color name="actionbarex_common_status_bar_color_def">#00000000</color>
+    <declare-styleable name="ActionBarEx">
+        <attr format="boolean" name="ab_autoImmersion"/>
+        <!--背景层布局-->
+        <attr format="reference" name="ab_backgroundLayerLayout"/>
+        <!--背景层为图片-->
+        <attr format="reference" name="ab_backgroundLayerImageRes"/>
+        <!--主体层-->
+        <attr format="boolean|reference" name="ab_statusBarVisible"/>
+        <attr format="color|reference" name="ab_statusBarColor"/>
+        <attr format="enum" name="ab_statusBarMode">
+            <enum name="light" value="0"/>
+            <enum name="dark" value="1"/>
+        </attr>
+        <attr format="reference" name="ab_clickToFinish"/>
+        <attr format="reference" name="ab_titleBarLayout"/>
+        <attr format="dimension|reference" name="ab_titleBarHeight"/>
+        <attr format="dimension|reference" name="ab_bottomLineHeight"/>
+        <attr format="color|reference" name="ab_bottomLineColor"/>
+        <attr format="reference" name="ab_bottomLineResId"/>
+        <attr format="boolean|reference" name="ab_bottomLineOutside"/>
+        <!--前景层布局-->
+        <attr format="reference" name="ab_foregroundLayerLayout"/>
+    </declare-styleable>
+    <dimen name="actionbarex_common_bottom_line_height_def">0dp</dimen>
+    <dimen name="actionbarex_common_title_bar_height_def">44dp</dimen>
+    <string name="actionbarex_common_app_name">ActionBarEx</string>
+</resources>
