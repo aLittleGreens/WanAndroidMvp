@@ -41,7 +41,7 @@ class HomePresenter : HomeContract.Presenter() {
             }
 
             override fun onFail(error: ApiException) {
-                mView?.getBannerFail(error.errorCode,error.showMessage)
+                mView?.getArticleListFailed(error.errorCode,error.showMessage)
             }
 
             override fun finish() {

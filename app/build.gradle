@@ -29,4 +29,8 @@ dependencies {
     implementation project(":actionbarex-common")
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'  //1.0.5及以前版本的老用户升级需谨慎，API改动过大
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'  //没有使用特殊Header，可以不加这行
+
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.45-androidx'
+
+    implementation 'com.makeramen:roundedimageview:2.3.0'//一个轻而易举实现 图片圆形 / 圆角 / 椭圆 库
 }

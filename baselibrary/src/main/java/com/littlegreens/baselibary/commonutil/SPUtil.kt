@@ -58,28 +58,28 @@ object SPUtil {
         return sp.getString(key, defValue)
     }
 
-    /**独立部分*/
-    fun putSpBoolean(key: String, value: Boolean) {
-        val editor = sp.edit()
-        editor.putBoolean(key, value)
-        editor.commit()
-    }
-
-    fun getSpBoolean(key: String, defValue: Boolean): Boolean {
-        return sp.getBoolean(key, defValue)
-    }
-
-    fun putSpString(key: String, value: String) {
-        val editor = sp.edit()
-        editor.putString(key, value)
-        editor.commit()
-    }
-
-    fun getSpString(key: String, defValue: String): String {
-        return sp.getString(key, defValue)
-    }
-
-    /**独立部分*/
+//    /**独立部分*/
+//    fun putSpBoolean(key: String, value: Boolean) {
+//        val editor = sp.edit()
+//        editor.putBoolean(key, value)
+//        editor.commit()
+//    }
+//
+//    fun getSpBoolean(key: String, defValue: Boolean): Boolean {
+//        return sp.getBoolean(key, defValue)
+//    }
+//
+//    fun putSpString(key: String, value: String) {
+//        val editor = sp.edit()
+//        editor.putString(key, value)
+//        editor.commit()
+//    }
+//
+//    fun getSpString(key: String, defValue: String): String {
+//        return sp.getString(key, defValue)
+//    }
+//
+//    /**独立部分*/
 
     fun clear() {
         val editor = sp.edit()

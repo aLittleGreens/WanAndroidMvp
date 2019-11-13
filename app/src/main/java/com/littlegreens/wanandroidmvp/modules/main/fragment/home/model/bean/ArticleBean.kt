@@ -10,7 +10,8 @@ import com.littlegreens.baselibary.basebean.BaseResponse
  * @since 2019/11/12 16:21
  */
 
-data class ArticleBeanTopList(override var data: List<ArticleBean>?) : BaseResponse<List<ArticleBean>>()
+data class ArticleBeanTopList(override var data: List<ArticleBean>?) :
+    BaseResponse<List<ArticleBean>>()
 
 data class ArticleBean(
     val apkLink: String,
@@ -36,7 +37,7 @@ data class ArticleBean(
     val shareUser: String,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Any>,
+    val tags: List<TagsBean>,
     val title: String,
     val type: Int,
     val userId: Int,
@@ -75,3 +76,13 @@ data class ArticleBean(
 //    "visible": 1,
 //    "zan": 0
 //}
+
+data class TagsBean(
+    var name: String,
+    var url: String
+)
+/**
+ * name : 公众号
+ * url : /wxarticle/list/410/1
+ */
+
